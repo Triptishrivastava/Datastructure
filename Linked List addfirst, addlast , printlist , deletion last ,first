@@ -1,0 +1,118 @@
+public class LinkedList_DS {
+    Node head;
+    private int size;
+    LinkedList_DS(){
+        this.size=0;
+    }
+
+    class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            next = null;
+        }
+
+    }
+
+    public    void addFirst(int data){
+
+        Node newNode = new Node(data);
+        if( head == null){
+            head=newNode;
+          //  return;
+
+        } else {
+            newNode.next = head;
+            head = newNode;
+
+        }
+        size++;
+
+    }
+
+        public void printList() {
+            if (head == null) {
+                System.out.println("List is empty");
+                // return;
+            } else {
+                Node currentNode = head;
+                while (currentNode.next != null) {
+                    System.out.print(currentNode.data + "->");
+
+                    currentNode = currentNode.next;
+                }
+                System.out.println("null");
+            }
+        }
+
+       public void deleteFirst(){
+        if(head==null){
+            System.out.println("No list is hear");
+        }
+        else {
+            head=head.next;
+            size--;
+
+        }
+
+       }
+    public void printList1() {
+        if (head == null) {
+            System.out.println("List is empty");
+            // return;
+        } else {
+            Node currentNode = head;
+            while (currentNode != null) {
+                System.out.print(currentNode.data + "->");
+
+                currentNode = currentNode.next;
+            }
+            System.out.println("null");
+        }
+    }
+    public void deleteLast(){
+        if(head==null){
+            System.out.println("List is empty");
+            return;
+        }
+        size--;
+        if(head.next==null){
+            head=null;
+            return;
+        }
+           Node SecondLast = head;
+           Node lastNode=head.next;
+           while(lastNode.next!=null){
+               SecondLast =SecondLast.next;
+               lastNode=lastNode.next;
+           }
+           SecondLast.next=null;
+
+    }
+    public int getSize(){
+        return size;
+    }
+
+
+
+    public static void main(String[] args) {
+        LinkedList_DS a=new LinkedList_DS();
+     //   LinkedList_DS.Node b=a.new Node(3);
+        a.addFirst(2);
+        a.addFirst(4);
+        a.addFirst(3);
+        a.addFirst(5);
+        a.addFirst(6);
+        a.printList();
+        a.deleteFirst();
+        a.printList1();
+        a.deleteLast();
+        a.printList1();
+        System.out.println(a.getSize());
+
+
+
+    }
+}
