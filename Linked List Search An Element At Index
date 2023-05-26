@@ -1,0 +1,81 @@
+class Node {
+    Node head;
+
+    int size = 0;
+    int data;
+    Node next;
+    void Noode(int data) {
+        this.data = data;
+        next = null;
+    }
+
+    public void addElement(int data) {
+
+        Node newNode = new Node();
+        newNode.Noode(data);
+
+        if (head == null) {
+            head = newNode;
+            size++;
+            return;
+        }
+        newNode.next = head;
+
+        head = newNode;
+        size++;
+    }
+
+    public void printList() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        Node currentNode = head;
+        while (currentNode != null) {
+            System.out.print(currentNode.data + "->");
+            currentNode = currentNode.next;
+        }
+        System.out.println("null");
+
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public int getElement(int indx) {
+        Node current = new Node();
+        int count = 0;
+        current =head;
+        while (current != null) {
+            if (count == indx)
+                return current.data;
+            count++;
+            current=current.next;
+        }
+        return 0;
+    }
+
+}
+
+
+public class Linked_List2 {
+
+    public static void main(String[] args) {
+        Node a = new Node();
+        a.addElement(2);
+        a.addElement(3);
+        a.addElement(4);
+        a.printList();
+       // System.out.println(a.size);
+
+       for(int i=0;i<a.size;i++){
+           if(a.getElement(i)==3){
+               System.out.println("Element is found at index " + i);
+
+           }
+       }
+       //System.out.println("element is found at index " + a.getElement(1));
+
+    }
+}
