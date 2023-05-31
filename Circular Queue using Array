@@ -1,0 +1,71 @@
+public class CircularQueue_Array {
+
+    static class Node{
+        int rear=-1;
+        int front=-1;
+        int size;
+        int arr[];
+        Node(int n){
+            this.size=n;
+            arr=new int[size];
+        }
+        public boolean isEmpty(){
+            return rear==-1 && front==-1;
+        }
+        public boolean isFull(){
+            return (rear+1)%size==front;
+        }
+        public void addElement(int data){
+          if(isFull()){
+              System.out.println("queue is full");
+              return;
+          }
+          if(front==-1){
+              front++;
+          }
+            rear=(rear+1)%size;
+            arr[rear]=data;
+        }
+        public int remove(){
+            if(isEmpty()){
+                System.out.println("Queue is empty");
+                return 0;
+            }
+            int result =arr[front];
+            if(rear==front){
+                rear=front=-1;
+            }
+            else {
+                front=(front+1)%size;
+            }
+              return  result;
+        }
+        public int peek(){
+            if(isEmpty()){
+                System.out.println("Queue is empty");
+                return 0;
+            }
+            int result=arr[front];
+            return result;
+        }
+
+    }
+    public static void main(String[] args) {
+        Node obj=new Node(5);
+        obj.addElement(2);
+        obj.addElement(3);
+        obj.addElement(4);
+        obj.addElement(6);
+        obj.addElement(7);
+        System.out.println(obj.remove());
+        obj.addElement(1);
+        System.out.println(obj.remove());
+        obj.addElement(8);
+         while(!obj.isEmpty()){
+             System.out.println(obj.peek());
+             obj.remove();
+         }
+
+
+    }
+}
