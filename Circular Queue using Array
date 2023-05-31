@@ -29,7 +29,7 @@ public class CircularQueue_Array {
         public int remove(){
             if(isEmpty()){
                 System.out.println("Queue is empty");
-                return 0;
+                return -1;
             }
             int result =arr[front];
             if(rear==front){
@@ -43,7 +43,7 @@ public class CircularQueue_Array {
         public int peek(){
             if(isEmpty()){
                 System.out.println("Queue is empty");
-                return 0;
+                return -1;
             }
             int result=arr[front];
             return result;
